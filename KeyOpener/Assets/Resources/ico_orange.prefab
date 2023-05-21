@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3996294810012909350}
   - component: {fileID: 3622042506698249279}
   - component: {fileID: 3268563555597205743}
+  - component: {fileID: -2206213044207132842}
   m_Layer: 0
   m_Name: ico_orange
   m_TagString: Untagged
@@ -97,3 +98,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrizeName: ico_orange
+--- !u!114 &-2206213044207132842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65149904480884193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3675fe8b69d3ac14d8c3bf0bfb8e1965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 50

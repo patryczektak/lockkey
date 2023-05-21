@@ -65,6 +65,10 @@ public class BallControllerV3 : MonoBehaviour
     public Gradient gradient;
 
     public PlayableDirector director;
+    public PlayableDirector directorUP;
+    public PlayableDirector directorDOWN;
+    public PlayableDirector directorLEFT;
+    public PlayableDirector directorRight;
 
     public GameObject canvas;
     private void Start()
@@ -217,6 +221,12 @@ public class BallControllerV3 : MonoBehaviour
             MoveClear();
             VibrationManager.Instance.Vibrate(0.1f, 0.5f);
         }
+
+        if (!canRotateUp && !isRotating && !endGame)
+        {
+            directorUP.Play();
+            wrong.Play();
+        }
     }
 
     public void DownMove()
@@ -245,6 +255,12 @@ public class BallControllerV3 : MonoBehaviour
             move.Play();
             MoveClear();
             VibrationManager.Instance.Vibrate(0.1f, 0.5f);
+        }
+
+        if (!canRotateDown && !isRotating && !endGame)
+        {
+            directorDOWN.Play();
+            wrong.Play();
         }
     }
 
@@ -277,6 +293,12 @@ public class BallControllerV3 : MonoBehaviour
             MoveClear();
             VibrationManager.Instance.Vibrate(0.1f, 0.5f);
         }
+
+        if (!canRotateLeft && !isRotating && !endGame)
+        {
+            directorLEFT.Play();
+            wrong.Play();
+        }
     }
 
     public void RightMove()
@@ -305,6 +327,12 @@ public class BallControllerV3 : MonoBehaviour
             move.Play();
             MoveClear();
             VibrationManager.Instance.Vibrate(0.1f, 0.5f);
+        }
+
+        if (!canRotateRight && !isRotating && !endGame)
+        {
+            directorRight.Play();
+            wrong.Play();
         }
     }
 
