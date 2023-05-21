@@ -9,6 +9,7 @@ public class LocalCSVLoader : MonoBehaviour
     public int columnToLoad; // Indeks kolumny do ³adowania jako prefabrykat
     public List<GameObject> prefabList; // Lista prefabrykatów
     public int currentPrefabIndex = 0; // Indeks prefabrykatu, który ma zostaæ utworzony
+    private GameObject objectToKill;
 
     private void Start()
     {
@@ -52,6 +53,11 @@ public class LocalCSVLoader : MonoBehaviour
 
     public void CreateNextPrefab()
     {
+        if (objectToKill != null)
+        {
+            Destroy(objectToKill);
+        }
+
         if (prefabList.Count > 0)
         {
             if (currentPrefabIndex >= prefabList.Count)
@@ -60,7 +66,7 @@ public class LocalCSVLoader : MonoBehaviour
             }
 
             GameObject prefab = prefabList[currentPrefabIndex];
-            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            objectToKill = Instantiate(prefab, transform.position, Quaternion.identity, transform);
 
             currentPrefabIndex++;
         }

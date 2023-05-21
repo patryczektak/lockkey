@@ -23,8 +23,9 @@ public class BallControllerV3 : MonoBehaviour
     private Quaternion startRotation;
     private Quaternion targetRotation;
     private Stack<Quaternion> previousRotations = new Stack<Quaternion>();
+    private GameObject objectToEnable;
 
-    
+
     //public int[] back;
     public int currentPoint = 0;
     public GameObject[] neon;
@@ -63,6 +64,7 @@ public class BallControllerV3 : MonoBehaviour
     public Slider slider;
     public Image fill;
     public Gradient gradient;
+    public GameObject prefabOrigin;
 
     public PlayableDirector director;
     public PlayableDirector directorUP;
@@ -82,6 +84,12 @@ public class BallControllerV3 : MonoBehaviour
         MoveCheck();
         director = GetComponent<PlayableDirector>();
         visitedRotations = new bool[visitedRotationSize, visitedRotationSize, visitedRotationSize];
+
+        objectToEnable = GameObject.Find("Next");
+        if (objectToEnable != null)
+        {
+            objectToEnable.SetActive(false);
+        }
     }
 
 
@@ -118,20 +126,20 @@ public class BallControllerV3 : MonoBehaviour
             ResetGame();
         }
 
-            //Rotate the ball over time
-            if (isRotating)
-            {
+        //Rotate the ball over time
+        if (isRotating)
+        {
             rotationTimer += Time.deltaTime;
             float t = Mathf.Clamp01(rotationTimer * 0.1f / rotationTime);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, t);
 
             if (t >= 0.1f)
             {
-                // End the rotation and update the initial rotation for the next rotation
+                // Koniec obrotu i aktualizacja pocz¹tkowego obrotu dla kolejnego obrotu
                 isRotating = false;
                 startRotation = targetRotation;
                 MoveCheck();
-                if (!visitedRotations[Mathf.RoundToInt(transform.rotation.eulerAngles.x / 90), Mathf.RoundToInt(transform.rotation.eulerAngles.y / 90), Mathf.RoundToInt(transform.rotation.eulerAngles.z / 90)] == true && currentPoint !=0) 
+                if (!visitedRotations[Mathf.RoundToInt(transform.rotation.eulerAngles.x / 90), Mathf.RoundToInt(transform.rotation.eulerAngles.y / 90), Mathf.RoundToInt(transform.rotation.eulerAngles.z / 90)] == true && currentPoint != 0)
                 {
                     MarkVisitedRotation();
                     gameTime += extraTime;
@@ -146,15 +154,22 @@ public class BallControllerV3 : MonoBehaviour
                     Debug.Log("zwiedzone ju¿");
                 }
 
-                if (currentPoint == SuccesGame-1)
+                if (currentPoint == SuccesGame - 1)
                 {
                     endGame = true;
                     MoveClear();
                     Debug.Log("wygrana");
+                    //odnajdywanie przycisku do nastêpnego prefabu
+
+                    objectToEnable.SetActive(true);
+
+                    //zabicie siebie samego
+                    //Destroy(prefabOrigin);
                     //director.Play();
                 }
             }
         }
+
 
 
         if (runTime == true && endGame == false)
