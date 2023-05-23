@@ -70,21 +70,21 @@ public class CreatePrefabsFromCSV : MonoBehaviour
         }
     }
 
-    public void ExportToCSV()
-    {
-        string csvFilePath = "Assets/Resources/" + csvFileName + ".csv"; // Œcie¿ka do pliku CSV w folderze "Assets/Resources"
+    //public void ExportToCSV()
+    //{
+    //    string csvFilePath = "Assets/Resources/" + csvFileName + ".csv"; // Œcie¿ka do pliku CSV w folderze "Assets/Resources"
 
-        using (StreamWriter writer = new StreamWriter(csvFilePath))
-        {
-            for (int i = 0; i < prefabList.Count; i++)
-            {
-                string prefabName = Path.GetFileNameWithoutExtension(AssetDatabase.GetAssetPath(prefabList[i]));
-                writer.WriteLine(prefabName);
-            }
-        }
+    //    using (StreamWriter writer = new StreamWriter(csvFilePath))
+    //    {
+    //        for (int i = 0; i < prefabList.Count; i++)
+    //        {
+    //            string prefabName = Path.GetFileNameWithoutExtension(AssetDatabase.GetAssetPath(prefabList[i]));
+    //            writer.WriteLine(prefabName);
+    //        }
+    //    }
 
-        AssetDatabase.Refresh();
+    //    AssetDatabase.Refresh();
 
-        Debug.Log("Plik CSV zosta³ wyeksportowany.");
-    }
+    //    Debug.Log("Plik CSV zosta³ wyeksportowany.");
+    //}
 }

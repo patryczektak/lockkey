@@ -76,21 +76,21 @@ public class LocalCSVLoader : MonoBehaviour
         }
     }
 
-    public void ExportToCSV()
-    {
-        string csvFilePath = AssetDatabase.GetAssetPath(csvFile); // Œcie¿ka do pliku CSV
+    //public void ExportToCSV()
+    //{
+    //    string csvFilePath = AssetDatabase.GetAssetPath(csvFile); // Œcie¿ka do pliku CSV
 
-        using (StreamWriter writer = new StreamWriter(csvFilePath))
-        {
-            for (int i = 0; i < prefabList.Count; i++)
-            {
-                string prefabName = AssetDatabase.GetAssetPath(prefabList[i]);
-                writer.WriteLine(prefabName);
-            }
-        }
+    //    using (StreamWriter writer = new StreamWriter(csvFilePath))
+    //    {
+    //        for (int i = 0; i < prefabList.Count; i++)
+    //        {
+    //            string prefabName = AssetDatabase.GetAssetPath(prefabList[i]);
+    //            writer.WriteLine(prefabName);
+    //        }
+    //    }
 
-        AssetDatabase.Refresh();
+    //    AssetDatabase.Refresh();
 
-        Debug.Log("Plik CSV zosta³ wyeksportowany.");
-    }
+    //    Debug.Log("Plik CSV zosta³ wyeksportowany.");
+    //}
 }

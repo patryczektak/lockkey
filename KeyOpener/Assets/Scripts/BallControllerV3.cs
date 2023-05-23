@@ -97,35 +97,7 @@ public class BallControllerV3 : MonoBehaviour
     private void Update()
     {
         SetTime();
-        // Rotate left
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && canRotateLeft && !isRotating && !endGame)
-        {
-            LeftMove();
-        }
-
-        // Rotate right
-        if (Input.GetKeyDown(KeyCode.RightArrow) && canRotateRight && !isRotating && !endGame)
-        {
-            RightMove();
-        }
-
-        // Rotate up
-        if (Input.GetKeyDown(KeyCode.UpArrow) && canRotateUp && !isRotating && !endGame)
-        {
-            UpMove();
-        }
-
-        // Rotate down
-        if (Input.GetKeyDown(KeyCode.DownArrow) && canRotateDown && !isRotating && !endGame)
-        {
-            DownMove();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q) && !isRotating)
-        {
-            ResetGame();
-        }
-
+        
         //Rotate the ball over time
         if (isRotating)
         {
@@ -214,14 +186,6 @@ public class BallControllerV3 : MonoBehaviour
     {
         if (canRotateUp && !isRotating && !endGame)
         {
-            //if (currentPoint > 0 && canRotateDown[currentPoint - 1])
-            //{
-            //    currentPoint--;
-            //}
-            //else if (canRotateUp[currentPoint])
-            //{
-            //    currentPoint++;
-            //}
             // Set the target rotation based on the current global rotation and the desired rotation angle
             targetRotation = Quaternion.Euler(-rotationAngle, 0, 0) * transform.rotation;
 
@@ -248,15 +212,6 @@ public class BallControllerV3 : MonoBehaviour
     {
         if (canRotateDown && !isRotating && !endGame)
         {
-            //if (currentPoint > 0 && canRotateUp[currentPoint - 1])
-            //{
-            //    currentPoint--;
-            //}
-            //else if (canRotateDown[currentPoint])
-            //{
-            //    currentPoint++;
-            //}
-
             // Set the target rotation based on the current global rotation and the desired rotation angle
             targetRotation = Quaternion.Euler(rotationAngle, 0, 0) * transform.rotation;
 
@@ -283,17 +238,6 @@ public class BallControllerV3 : MonoBehaviour
     {
         if (canRotateLeft && !isRotating && !endGame)
         {
-            //if (currentPoint > 0 && canRotateRight[currentPoint - 1])
-            //{
-            //    currentPoint--;
-            //}
-            //else if (canRotateLeft[currentPoint])
-            //{
-            //    currentPoint++;
-            //}
-
-
-
             // Set the target rotation based on the current global rotation and the desired rotation angle
             targetRotation = Quaternion.Euler(0, -rotationAngle, 0) * transform.rotation;
 
@@ -320,15 +264,6 @@ public class BallControllerV3 : MonoBehaviour
     {
         if (canRotateRight && !isRotating && !endGame)
         {
-            //if (currentPoint > 0 && canRotateLeft[currentPoint - 1])
-            //{
-            //    currentPoint--;
-            //}
-            //else if (canRotateRight[currentPoint])
-            //{
-            //    currentPoint++;
-            //}
-
             // Set the target rotation based on the current global rotation and the desired rotation angle
             targetRotation = Quaternion.Euler(0, rotationAngle, 0) * transform.rotation;
 
