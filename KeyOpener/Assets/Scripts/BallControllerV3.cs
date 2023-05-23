@@ -102,10 +102,10 @@ public class BallControllerV3 : MonoBehaviour
         if (isRotating)
         {
             rotationTimer += Time.deltaTime;
-            float t = Mathf.Clamp01(rotationTimer * 0.1f / rotationTime);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, t);
+            float t = Mathf.Clamp01(rotationTimer * 2f);
+            transform.rotation = Quaternion.Lerp(startRotation, targetRotation, t);
 
-            if (t >= 0.1f)
+            if (rotationTimer >= 0.5f)
             {
                 // Koniec obrotu i aktualizacja pocz¹tkowego obrotu dla kolejnego obrotu
                 isRotating = false;
@@ -139,6 +139,7 @@ public class BallControllerV3 : MonoBehaviour
                     //Destroy(prefabOrigin);
                     //director.Play();
                 }
+                rotationTimer = 0f;
             }
         }
 
