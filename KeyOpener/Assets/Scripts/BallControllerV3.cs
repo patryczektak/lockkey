@@ -67,6 +67,7 @@ public class BallControllerV3 : MonoBehaviour
     public GameObject prefabOrigin;
 
     public PlayableDirector director;
+    public PlayableDirector directorDissolve;
     public PlayableDirector directorUP;
     public PlayableDirector directorDOWN;
     public PlayableDirector directorLEFT;
@@ -82,7 +83,7 @@ public class BallControllerV3 : MonoBehaviour
         gameTimeReset = gameTime;
         SetMaxTime();
         MoveCheck();
-        director = GetComponent<PlayableDirector>();
+        //director = GetComponent<PlayableDirector>();
         visitedRotations = new bool[visitedRotationSize, visitedRotationSize, visitedRotationSize];
 
         objectToEnable = GameObject.Find("Next");
@@ -137,7 +138,8 @@ public class BallControllerV3 : MonoBehaviour
 
                     //zabicie siebie samego
                     //Destroy(prefabOrigin);
-                    //director.Play();
+                    director.Play();
+                    directorDissolve.Play();
                 }
                 rotationTimer = 0f;
             }
@@ -199,7 +201,7 @@ public class BallControllerV3 : MonoBehaviour
             runTime = true;
             move.Play();
             MoveClear();
-            VibrationManager.Instance.Vibrate(0.1f, 0.5f);
+            VibrationManager.Instance.Vibrate(0.05f, 0.2f);
         }
 
         if (!canRotateUp && !isRotating && !endGame)
@@ -225,7 +227,7 @@ public class BallControllerV3 : MonoBehaviour
             runTime = true;
             move.Play();
             MoveClear();
-            VibrationManager.Instance.Vibrate(0.1f, 0.5f);
+            VibrationManager.Instance.Vibrate(0.05f, 0.2f);
         }
 
         if (!canRotateDown && !isRotating && !endGame)
@@ -251,7 +253,7 @@ public class BallControllerV3 : MonoBehaviour
             runTime = true;
             move.Play();
             MoveClear();
-            VibrationManager.Instance.Vibrate(0.1f, 0.5f);
+            VibrationManager.Instance.Vibrate(0.05f, 0.2f);
         }
 
         if (!canRotateLeft && !isRotating && !endGame)
@@ -277,7 +279,7 @@ public class BallControllerV3 : MonoBehaviour
             runTime = true;
             move.Play();
             MoveClear();
-            VibrationManager.Instance.Vibrate(0.1f, 0.5f);
+            VibrationManager.Instance.Vibrate(0.05f, 0.2f);
         }
 
         if (!canRotateRight && !isRotating && !endGame)

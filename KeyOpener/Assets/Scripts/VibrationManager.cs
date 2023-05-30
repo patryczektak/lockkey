@@ -26,7 +26,7 @@ public class VibrationManager : MonoBehaviour
             intensity = Mathf.Clamp01(intensity);
 
             // Oblicz czas trwania wibracji w milisekundach
-            long milliseconds = (long)(duration * 1000f);
+            long milliseconds = (long)(duration * 100f);
 
             // Wibracja na urz¹dzeniu mobilnym z okreœlonym czasem trwania i moc¹
             Handheld.Vibrate();
