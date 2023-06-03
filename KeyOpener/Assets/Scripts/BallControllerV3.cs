@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
@@ -86,14 +87,19 @@ public class BallControllerV3 : MonoBehaviour
         //director = GetComponent<PlayableDirector>();
         visitedRotations = new bool[visitedRotationSize, visitedRotationSize, visitedRotationSize];
 
-        objectToEnable = GameObject.Find("Next");
+        objectToEnable = GameObject.Find("NextPanel");
         if (objectToEnable != null)
         {
-            objectToEnable.SetActive(false);
+            Debug.Log("znalaz³em");
+            StartCoroutine(DisableObjectWithDelay());
         }
     }
 
-
+    public IEnumerator DisableObjectWithDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        objectToEnable.SetActive(false);
+    }
 
     private void Update()
     {

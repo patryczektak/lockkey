@@ -10,6 +10,7 @@ public class LocalCSVLoader : MonoBehaviour
     public List<GameObject> prefabList; // Lista prefabrykatów
     public int currentPrefabIndex = 0; // Indeks prefabrykatu, który ma zostaæ utworzony
     private GameObject objectToKill;
+    public panelAnim anim;
 
     private void Start()
     {
@@ -53,6 +54,7 @@ public class LocalCSVLoader : MonoBehaviour
 
     public void CreateNextPrefab()
     {
+        anim.Hide();
         if (objectToKill != null)
         {
             Destroy(objectToKill);
