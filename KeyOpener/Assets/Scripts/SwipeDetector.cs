@@ -10,6 +10,13 @@ public class SwipeDetector : MonoBehaviour
     private float minSwipeDistance = 20f;
 
     public BallControllerV3 ballMove;
+    //wykrywanie czy okno nagród jest aktywne, by nie uruchomiæ gry przypadkiem
+    private animPlayOnEnable panelShow;
+
+    private void Start()
+    {
+        panelShow = GameObject.FindObjectOfType<animPlayOnEnable>();
+    }
 
     private void Update()
     {
@@ -68,7 +75,7 @@ public class SwipeDetector : MonoBehaviour
             return;
         }
 
-        if (SwipeDistanceCheck())
+        if (SwipeDistanceCheck() && panelShow.TresureUI == false)
         {
             float swipeAngle = Mathf.Atan2(fingerUpPosition.y - fingerDownPosition.y, fingerUpPosition.x - fingerDownPosition.x) * Mathf.Rad2Deg;
             if (swipeAngle > -180 && swipeAngle < -90) // Swipe w lewy górny róg

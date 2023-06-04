@@ -23,10 +23,10 @@ public class VibrationManager : MonoBehaviour
         if (SystemInfo.supportsVibration)
         {
             // Konwertuj moc wibracji na zakres od 0.0f do 1.0f
-            intensity = Mathf.Clamp01(intensity);
+            intensity = Mathf.Clamp01(intensity * 0.5f);
 
             // Oblicz czas trwania wibracji w milisekundach
-            long milliseconds = (long)(duration * 100f);
+            long milliseconds = (long)(duration * 1000f);
 
             // Wibracja na urz¹dzeniu mobilnym z okreœlonym czasem trwania i moc¹
             Handheld.Vibrate();

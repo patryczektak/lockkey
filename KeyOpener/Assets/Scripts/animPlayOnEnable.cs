@@ -5,11 +5,23 @@ using UnityEngine.Playables;
 
 public class animPlayOnEnable : MonoBehaviour
 {
-    public PlayableDirector director;
+    public PlayableDirector directorShow;
+    public PlayableDirector directorHide;
+    public bool TresureUI;
 
+    public void Show()
+    {        
+        TresureUI = true;
+        directorShow.Stop();
+        directorShow.time = 0f;
+        directorShow.Play();
+    }
 
-    private void OnEnable()
-    {
-        director.Play(); 
+    public void Hide()
+    {        
+        TresureUI = false;
+        directorHide.Stop();
+        directorHide.time = 0f;
+        directorHide.Play();
     }
 }
