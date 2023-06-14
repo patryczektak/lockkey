@@ -3736,7 +3736,7 @@ GameObject:
   - component: {fileID: 359714037}
   m_Layer: 5
   m_Name: ObjGreen
-  m_TagString: Untagged
+  m_TagString: trophy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5044,7 +5044,7 @@ GameObject:
   - component: {fileID: 562627775}
   m_Layer: 5
   m_Name: ObjBronze
-  m_TagString: Untagged
+  m_TagString: trophy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5723,7 +5723,7 @@ GameObject:
   - component: {fileID: 684156292}
   m_Layer: 5
   m_Name: Obj5
-  m_TagString: Untagged
+  m_TagString: trophy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6937,7 +6937,7 @@ GameObject:
   - component: {fileID: 850819857}
   m_Layer: 5
   m_Name: ObjBlue
-  m_TagString: Untagged
+  m_TagString: trophy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8763,7 +8763,7 @@ GameObject:
   - component: {fileID: 1046131553}
   m_Layer: 5
   m_Name: Obj8
-  m_TagString: Untagged
+  m_TagString: trophy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9817,7 +9817,7 @@ GameObject:
   - component: {fileID: 1121670247}
   m_Layer: 5
   m_Name: Obj6
-  m_TagString: Untagged
+  m_TagString: trophy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10862,7 +10862,7 @@ GameObject:
   - component: {fileID: 1306233320}
   m_Layer: 5
   m_Name: Obj7
-  m_TagString: Untagged
+  m_TagString: trophy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13721,7 +13721,7 @@ GameObject:
   - component: {fileID: 1656833388}
   m_Layer: 5
   m_Name: ObjWhite
-  m_TagString: Untagged
+  m_TagString: trophy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14473,7 +14473,7 @@ GameObject:
   - component: {fileID: 1720024860}
   m_Layer: 5
   m_Name: ObjRed
-  m_TagString: Untagged
+  m_TagString: trophy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17566,6 +17566,7 @@ MonoBehaviour:
   canRotateRight: 0
   canRotateUp: 1
   canRotateDown: 0
+  isRotating: 0
   currentPoint: 0
   neon:
   - {fileID: 1833690932}

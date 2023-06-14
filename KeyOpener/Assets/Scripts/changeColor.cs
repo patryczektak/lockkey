@@ -11,14 +11,31 @@ public class changeColor : MonoBehaviour
     private bool wasHere;
     public BallControllerV3 controller;
 
+    //wartoœæ ile warstw musi miec grac by zmieni³o kolor globalnie
+    public int colorMove;
+
     public bool UpMove;
     public bool DownMove;
     public bool LeftMove;
     public bool RightMove;
     // Start is called before the first frame update
+    public void Update()
+    {
+        if(controller.currentPoint == 0)
+        {
+            wasHere = false;
+        }
+    }
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !finalPath && controller.runTime == false)
+        {
+            controller.canRotateLeft = LeftMove;
+            controller.canRotateRight = RightMove;
+            controller.canRotateUp = UpMove;
+            controller.canRotateDown = DownMove;
+        }
+            if (other.CompareTag("Player") && !finalPath && controller.runTime == true)
         {
             controller.canRotateLeft = LeftMove;
             controller.canRotateRight = RightMove;
@@ -29,10 +46,10 @@ public class changeColor : MonoBehaviour
             {
                 controller.currentPoint += 1;
                 wasHere = true;
-                if (finalPath)
-                {
-                    controller.director.Play();
-                }
+                //if (finalPath)
+                //{
+                //    controller.director.Play();
+                //}
             }
             foreach (GameObject obj in objectsToChangeColor)
             {
@@ -48,5 +65,29 @@ public class changeColor : MonoBehaviour
                 }
             }
         }
+
+
+        if (other.CompareTag("Player") && finalPath && controller.currentPoint == (controller.SuccesGame - colorMove) && correctPath == true && !wasHere && controller.endGame == false)
+        {
+            controller.currentPoint += 1;
+            wasHere = true;
+            controller.director.Play();
+
+            foreach (GameObject obj in objectsToChangeColor)
+            {
+                Renderer renderer = obj.GetComponent<Renderer>();
+                if (renderer != null)
+                {
+                    Material[] materials = renderer.materials;
+                    if (materials.Length >= 2)
+                    {
+                        materials[1] = newMaterial;
+                        renderer.materials = materials;
+                    }
+                }
+            }
+        }
+        
     }
+    
 }

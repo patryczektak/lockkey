@@ -19,7 +19,7 @@ public class BallControllerV3 : MonoBehaviour
     public bool canRotateUp;
     public bool canRotateDown;
 
-    private bool isRotating = false;
+    public bool isRotating = false;
     private float rotationTimer = 0.0f;
     private Quaternion startRotation;
     private Quaternion targetRotation;
@@ -146,6 +146,8 @@ public class BallControllerV3 : MonoBehaviour
                     //Destroy(prefabOrigin);
                     director.Play();
                     directorDissolve.Play();
+
+                    PlayerPrefs.SetInt("exp", PlayerPrefs.GetInt("exp") + 1);
                 }
                 rotationTimer = 0f;
             }
@@ -342,6 +344,7 @@ public class BallControllerV3 : MonoBehaviour
 
     private void ClearVisitedRotations()
     {
+        Debug.Log("start clear");
         for (int x = 0; x < visitedRotations.GetLength(0); x++)
         {
             for (int y = 0; y < visitedRotations.GetLength(1); y++)

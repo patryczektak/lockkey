@@ -15,6 +15,17 @@ public class animPlayOnEnable : MonoBehaviour
         directorShow.Stop();
         directorShow.time = 0f;
         directorShow.Play();
+
+        GameObject[] trophyObjects = GameObject.FindGameObjectsWithTag("trophy");
+
+        foreach (GameObject trophyObject in trophyObjects)
+        {
+            trophy trophyScript = trophyObject.GetComponent<trophy>();
+            if (trophyScript != null)
+            {
+                trophyScript.Check(); // Wywo³aj funkcjê Check() na danym obiekcie Trophy
+            }
+        }
     }
 
     public void Hide()

@@ -14,8 +14,28 @@ public class LocalCSVLoader : MonoBehaviour
 
     private void Start()
     {
+        ColumnCheck();
         LoadPrefabsFromCSV();
-        CreateNextPrefab();
+        CreateNextPrefab();        
+    }
+
+    public void ColumnCheck()
+    {
+        //ustalanie indexu wed³ug exp gracza
+        if (PlayerPrefs.GetInt("exp") == 0)
+        {
+            columnToLoad = 0;
+        }
+
+        if (PlayerPrefs.GetInt("exp") >= 1)
+        {
+            columnToLoad = 1;
+        }
+
+        if (PlayerPrefs.GetInt("exp") >= 10)
+        {
+            columnToLoad = 2;
+        }
     }
 
     public void LoadPrefabsFromCSV()
@@ -54,6 +74,8 @@ public class LocalCSVLoader : MonoBehaviour
 
     public void CreateNextPrefab()
     {
+        ColumnCheck();
+        LoadPrefabsFromCSV();
         anim.Hide();
         if (objectToKill != null)
         {

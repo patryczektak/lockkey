@@ -9,6 +9,10 @@ public class trophy : MonoBehaviour
     public TextMeshProUGUI textMeshPro;
     public string nameID;
     public GameObject myself;
+
+    public delegate void CheckDelegate();
+
+    public static event CheckDelegate OnCheck;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +32,7 @@ public class trophy : MonoBehaviour
         {
             myself.SetActive(true);
             textMeshPro.text = nameTrophy;
+            Debug.Log("sprawdzam");
         }
     }
 }
