@@ -54,37 +54,26 @@ public class CreatePrefabsFromCSV : MonoBehaviour
     {
         if (prefabList.Count > 0)
         {
-            if (currentPrefabIndex >= prefabList.Count)
-            {
-                currentPrefabIndex = 0;
-            }
-
-            GameObject prefab = prefabList[currentPrefabIndex];
+            int randomIndex = Random.Range(0, prefabList.Count);
+            GameObject prefab = prefabList[randomIndex];
             Instantiate(prefab, transform.position, Quaternion.identity);
-
-            currentPrefabIndex++;
         }
+        //if (prefabList.Count > 0)
+        //{
+        //    if (currentPrefabIndex >= prefabList.Count)
+        //    {
+        //        currentPrefabIndex = 0;
+        //    }
+
+        //    GameObject prefab = prefabList[currentPrefabIndex];
+        //    Instantiate(prefab, transform.position, Quaternion.identity);
+
+        //    currentPrefabIndex++;
+        //}
         else
         {
             Debug.Log("Lista prefabów jest pusta.");
         }
     }
 
-    //public void ExportToCSV()
-    //{
-    //    string csvFilePath = "Assets/Resources/" + csvFileName + ".csv"; // Œcie¿ka do pliku CSV w folderze "Assets/Resources"
-
-    //    using (StreamWriter writer = new StreamWriter(csvFilePath))
-    //    {
-    //        for (int i = 0; i < prefabList.Count; i++)
-    //        {
-    //            string prefabName = Path.GetFileNameWithoutExtension(AssetDatabase.GetAssetPath(prefabList[i]));
-    //            writer.WriteLine(prefabName);
-    //        }
-    //    }
-
-    //    AssetDatabase.Refresh();
-
-    //    Debug.Log("Plik CSV zosta³ wyeksportowany.");
-    //}
 }
