@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.unity3d.player"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <application>
+    <!-- Dodaj uprawnienie dostępu do sieci -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Dodaj pakiet Google Play Services -->
+    <meta-data android:name="com.google.android.gms.version"
+               android:value="@integer/google_play_services_version" />
+
+    <!-- Dodaj pakiet Firebase -->
+    <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id"
+               android:value="@string/default_notification_channel_id" />
+
+    <!-- Dodaj pakiet AdMob -->
+    <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID"
+               android:value="ca-app-pub-3935654686224415" />
+
+    <activity android:name="com.unity3d.player.UnityPlayerActivity"
+              android:theme="@style/UnityThemeSelector">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+      <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
+    </activity>
+  </application>
+</manifest>
