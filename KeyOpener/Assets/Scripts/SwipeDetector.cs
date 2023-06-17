@@ -16,6 +16,7 @@ public class SwipeDetector : MonoBehaviour
     private void Start()
     {
         panelShow = GameObject.FindObjectOfType<animPlayOnEnable>();
+
     }
 
     private void Update()
@@ -75,7 +76,10 @@ public class SwipeDetector : MonoBehaviour
             return;
         }
 
-        if (SwipeDistanceCheck() && panelShow.TresureUI == false)
+        //sprawdza czy bool jest fa³szywy i zezwala na ruch
+        StartUIBlocker startUIBlocker = FindObjectOfType<StartUIBlocker>();
+
+        if (SwipeDistanceCheck() && panelShow.TresureUI == false && !startUIBlocker.StartGame)
         {
             float swipeAngle = Mathf.Atan2(fingerUpPosition.y - fingerDownPosition.y, fingerUpPosition.x - fingerDownPosition.x) * Mathf.Rad2Deg;
             if (swipeAngle > -180 && swipeAngle < -90) // Swipe w lewy górny róg
