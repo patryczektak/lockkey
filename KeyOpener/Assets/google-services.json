@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:720126870109:android:f684584bff4ce0849243b4",
+        "mobilesdk_app_id": "1:720126870109:android:5d0161bd583de29f9243b4",
         "android_client_info": {
-          "package_name": "com.potterybridge.cyberlock"
+          "package_name": "com.cyberlock.urpblank"
         }
       },
       "oauth_client": [
