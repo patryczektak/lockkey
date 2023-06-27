@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Firebase.Analytics;
 
 public class trophy : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class trophy : MonoBehaviour
     {
         //textMeshPro = GetComponent<TextMeshProUGUI>();
         Check();
+        FirebaseAnalytics.LogEvent("GameOpen");
     }
 
     private void OnEnable()
