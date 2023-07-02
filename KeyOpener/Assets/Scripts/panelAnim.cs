@@ -7,12 +7,15 @@ public class panelAnim : MonoBehaviour
 {
     public PlayableDirector timeline;
     public PlayableDirector timelineBack;
+    public AdManager AdShow;
 
     public void Show()
     {
         timeline.Stop();
         timeline.time = 0f;
         timeline.Play();
+
+        AdShow.ShowAd();
     }
 
     public void Hide()

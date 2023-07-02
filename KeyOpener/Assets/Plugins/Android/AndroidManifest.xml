@@ -17,7 +17,7 @@
 
     <!-- Dodaj pakiet AdMob -->
     <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID"
-               android:value="ca-app-pub-3935654686224415~5793187773" />
+               android:value="ca-app-pub-3935654686224415~1440199166" />
 
     <activity android:name="com.unity3d.player.UnityPlayerActivity"
               android:theme="@style/UnityThemeSelector">

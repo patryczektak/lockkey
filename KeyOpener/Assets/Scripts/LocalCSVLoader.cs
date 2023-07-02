@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using TMPro;
 
 public class LocalCSVLoader : MonoBehaviour
 {
@@ -12,13 +13,20 @@ public class LocalCSVLoader : MonoBehaviour
     private GameObject objectToKill;
     public panelAnim anim;
 
+    public TextMeshProUGUI levelText;
+    public TextMeshProUGUI levelTextShadow;
+
     private void Start()
     {
         ColumnCheck();
         LoadPrefabsFromCSV();
         CreateNextPrefab();        
     }
-
+    public void Update()
+    {
+        levelText.text = PlayerPrefs.GetInt("exp").ToString();
+        levelTextShadow.text = PlayerPrefs.GetInt("exp").ToString();
+    }
     public void ColumnCheck()
     {
         //ustalanie indexu wed³ug exp gracza

@@ -833,6 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newMaterial: {fileID: 2100000, guid: a922c84b1d3eb804291b568e05c845e3, type: 2}
+  resetMaterial: {fileID: 0}
   objectsToChangeColor: []
   correctPath: 0
   finalPath: 0
@@ -4754,6 +4755,12 @@ PrefabInstance:
       propertyPath: newMaterial
       value: 
       objectReference: {fileID: 2100000, guid: cc3c5353f0087e14a8b234e297980ecf, type: 2}
+    - target: {fileID: 7909049588393189158, guid: 3aaa5be5a08b1014cb9a82d561a79d36,
+        type: 3}
+      propertyPath: resetMaterial
+      value: 
+      objectReference: {fileID: -8734798931103004185, guid: c9c8626d449a7d242a54ddf7a239fe22,
+        type: 3}
     - target: {fileID: 7909049588393189158, guid: 3aaa5be5a08b1014cb9a82d561a79d36,
         type: 3}
       propertyPath: objectsToChangeColor.Array.size

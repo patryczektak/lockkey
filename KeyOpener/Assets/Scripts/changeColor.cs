@@ -5,6 +5,7 @@ using UnityEngine;
 public class changeColor : MonoBehaviour
 {
     public Material newMaterial;
+    public Material resetMaterial;
     public GameObject[] objectsToChangeColor;
     public bool correctPath;
     public bool finalPath;
@@ -87,7 +88,25 @@ public class changeColor : MonoBehaviour
                 }
             }
         }
-        
+
+        if (other.CompareTag("Player") && finalPath && controller.currentPoint == 0 && correctPath == true && !wasHere && controller.endGame == false)
+        {
+            foreach (GameObject obj in objectsToChangeColor)
+            {
+                Renderer renderer = obj.GetComponent<Renderer>();
+                if (renderer != null)
+                {
+                    Material[] materials = renderer.materials;
+                    if (materials.Length >= 2)
+                    {
+                        materials[1] = resetMaterial;
+                        renderer.materials = materials;
+                    }
+                }
+            }
+        }
+
+
     }
     
 }
