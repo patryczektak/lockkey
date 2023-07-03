@@ -9,12 +9,13 @@ public class rewardSpawn : MonoBehaviour
     public class PrefabData
     {
         public GameObject prefab;
-        public float spawnChance;
+        public List<float> spawnChances;
     }
 
     public TextAsset csvFile; // Plik CSV z list¹ prefabrykatów
     public List<PrefabData> prefabList; // Lista prefabrykatów i ich szans na spawn
     public int currentPrefabIndex = 0; // Indeks prefabrykatu, który ma zostaæ utworzony
+    public int spawnChanceColumn = 2; // Indeks kolumny z szansami na spawn
 
     private void Start()
     {
@@ -34,30 +35,40 @@ public class rewardSpawn : MonoBehaviour
                 string line = csvLines[i];
                 string[] prefabData = line.Trim().Split(',');
 
-                if (prefabData.Length >= 2)
+                if (prefabData.Length >= spawnChanceColumn + 1)
                 {
                     string prefabName = prefabData[0];
-                    float spawnChance = 0f;
 
-                    if (float.TryParse(prefabData[1], out spawnChance))
+                    GameObject prefab = Resources.Load<GameObject>(prefabName);
+                    if (prefab != null)
                     {
-                        GameObject prefab = Resources.Load<GameObject>(prefabName);
-                        if (prefab != null)
-                        {
-                            PrefabData data = new PrefabData();
-                            data.prefab = prefab;
-                            data.spawnChance = spawnChance;
+                        PrefabData data = new PrefabData();
+                        data.prefab = prefab;
+                        data.spawnChances = new List<float>();
 
-                            prefabList.Add(data);
-                        }
-                        else
+                        for (int j = spawnChanceColumn; j < prefabData.Length; j++)
                         {
-                            Debug.LogWarning("Nie mo¿na znaleŸæ prefabrykatu: " + prefabName);
+                            if (float.TryParse(prefabData[j], out float spawnChance))
+                            {
+                                if (spawnChance > 0f)
+                                {
+                                    data.spawnChances.Add(spawnChance);
+                                }
+                            }
+                            else
+                            {
+                                Debug.LogWarning($"Nieprawid³owy format szansy na spawn dla prefabrykatu {prefabName} w kolumnie {j}");
+                            }
+                        }
+
+                        if (data.spawnChances.Count > 0)
+                        {
+                            prefabList.Add(data);
                         }
                     }
                     else
                     {
-                        Debug.LogWarning("Nieprawid³owy format szansy na spawn dla prefabrykatu: " + prefabName);
+                        Debug.LogWarning("Nie mo¿na znaleŸæ prefabrykatu: " + prefabName);
                     }
                 }
                 else
@@ -74,37 +85,65 @@ public class rewardSpawn : MonoBehaviour
 
     public void CreateNextPrefab()
     {
-        // Implementacja tworzenia prefabrykatu na podstawie szans na spawn
         if (prefabList.Count > 0)
         {
-            if (currentPrefabIndex >= prefabList.Count)
-            {
-                currentPrefabIndex = 0;
-            }
+            int randomIndex = Random.Range(0, prefabList.Count);
+            currentPrefabIndex = randomIndex;
 
-            // Tworzenie wa¿onej listy prefabrykatów
-            List<GameObject> weightedPrefabs = new List<GameObject>();
-            foreach (PrefabData prefabData in prefabList)
+            PrefabData prefabData = prefabList[currentPrefabIndex];
+
+            if (prefabData.spawnChances.Count > 0)
             {
-                for (int i = 0; i < prefabData.spawnChance; i++)
+                // Tworzenie wa¿onej listy prefabrykatów
+                List<GameObject> weightedPrefabs = new List<GameObject>();
+                List<float> weightedChances = new List<float>();
+
+                for (int i = 0; i < prefabData.spawnChances.Count; i++)
                 {
-                    weightedPrefabs.Add(prefabData.prefab);
+                    if (prefabData.spawnChances[i] > 0f)
+                    {
+                        weightedPrefabs.Add(prefabData.prefab);
+                        weightedChances.Add(prefabData.spawnChances[i]);
+                    }
                 }
-            }
 
-            // Losowanie prefabrykatu
-            if (weightedPrefabs.Count > 0)
-            {
-                int randomIndex = Random.Range(0, weightedPrefabs.Count);
-                GameObject prefab = weightedPrefabs[randomIndex];
-                Instantiate(prefab, transform.position, Quaternion.identity, this.transform);
+                // Sprawdzanie, czy s¹ dostêpne prefabrykaty do wylosowania
+                if (weightedPrefabs.Count > 0)
+                {
+                    // Sumowanie szans na spawn
+                    float totalSpawnChance = 0f;
+                    foreach (float chance in weightedChances)
+                    {
+                        totalSpawnChance += chance;
+                    }
+
+                    // Losowanie prefabrykatu
+                    float randomChance = Random.Range(0f, totalSpawnChance);
+                    float cumulativeChance = 0f;
+                    int chosenIndex = 0;
+
+                    for (int i = 0; i < weightedChances.Count; i++)
+                    {
+                        cumulativeChance += weightedChances[i];
+                        if (randomChance <= cumulativeChance)
+                        {
+                            chosenIndex = i;
+                            break;
+                        }
+                    }
+
+                    GameObject prefab = weightedPrefabs[chosenIndex];
+                    Instantiate(prefab, transform.position, Quaternion.identity, this.transform);
+                }
+                else
+                {
+                    Debug.LogWarning("Nie ma dostêpnych prefabrykatów do wylosowania.");
+                }
             }
             else
             {
-                Debug.LogWarning("Lista prefabrykatów jest pusta.");
+                Debug.LogWarning("Lista szans na spawn dla prefabrykatu jest pusta.");
             }
-
-            currentPrefabIndex++;
         }
         else
         {

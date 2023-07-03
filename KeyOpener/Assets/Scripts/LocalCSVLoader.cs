@@ -40,9 +40,13 @@ public class LocalCSVLoader : MonoBehaviour
             columnToLoad = 1;
         }
 
-        if (PlayerPrefs.GetInt("exp") >= 10)
+        if (PlayerPrefs.GetInt("exp") >= 15)
         {
             columnToLoad = 2;
+        }
+        if (PlayerPrefs.GetInt("exp") >= 20)
+        {
+            columnToLoad = 3;
         }
     }
 
