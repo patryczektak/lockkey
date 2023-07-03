@@ -19,8 +19,14 @@ public class rewardSpawn : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerPrefs.GetInt("exp") < 30)
+        {
+            spawnChanceColumn = 1;
+        }
         LoadPrefabsFromCSV();
         CreateNextPrefab();
+        //wczytywanie szansy wewd³ug poziomu gracza
+        
     }
 
     public void LoadPrefabsFromCSV()

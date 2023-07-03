@@ -11,10 +11,12 @@ public class AdManager : MonoBehaviour
     InterstitialAd interstitialAd;
     public string _adUnitId;
     public static AdManager Instance;
+    private int AdCounter;
 
     // Start is called before the first frame update
     void Start()
     {
+        AdCounter = 0;
         DontDestroyOnLoad(this.gameObject);
         if (Instance != null && Instance != this)
         {
@@ -70,14 +72,23 @@ public class AdManager : MonoBehaviour
 
     public void ShowAd()
     {
-        if (interstitialAd != null && interstitialAd.CanShowAd())
+        if (AdCounter == 0)
         {
-            Debug.Log("Showing interstitial ad.");
-            interstitialAd.Show();
+            AdCounter = 4;
+            if (interstitialAd != null && interstitialAd.CanShowAd())
+            {
+                Debug.Log("Showing interstitial ad.");
+                interstitialAd.Show();
+            }
+            else
+            {
+                Debug.LogError("Interstitial ad is not ready yet.");
+            }
         }
-        else
+
+        if(AdCounter > 0)
         {
-            Debug.LogError("Interstitial ad is not ready yet.");
+            AdCounter -= 1;
         }
     }
 
