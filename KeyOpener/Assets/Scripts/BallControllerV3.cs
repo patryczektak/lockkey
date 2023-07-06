@@ -18,6 +18,11 @@ public class BallControllerV3 : MonoBehaviour
     public bool canRotateRight;
     public bool canRotateUp;
     public bool canRotateDown;
+    //skosne
+    public bool canRotateDLeft;
+    public bool canRotateDRight;
+    public bool canRotateULeft;
+    public bool canRotateURight;
 
     public bool isRotating = false;
     private float rotationTimer = 0.0f;
@@ -271,6 +276,58 @@ public class BallControllerV3 : MonoBehaviour
         }
     }
 
+    public void DownLeftMove()
+    {
+        if (canRotateDLeft && !isRotating && !endGame)
+        {
+            // Set the target rotation based on the current global rotation and the desired rotation angle
+            targetRotation = Quaternion.Euler(-rotationAngle, -rotationAngle, 0) * transform.rotation;
+
+            // Add the previous rotation to the stack
+            previousRotations.Push(transform.rotation);
+
+            // Start the rotation
+            isRotating = true;
+            rotationTimer = 0.0f;
+            runTime = true;
+            move.Play();
+            MoveClear();
+            VibrationManager.Instance.Vibrate(0.05f, 0.2f);
+        }
+
+        //if (!canRotateDLeft && !isRotating && !endGame)
+        //{
+        //    directorLEFT.Play();
+        //    wrong.Play();
+        //}
+    }
+
+    public void UpLeftMove()
+    {
+        if (canRotateULeft && !isRotating && !endGame)
+        {
+            // Set the target rotation based on the current global rotation and the desired rotation angle
+            targetRotation = Quaternion.Euler(rotationAngle, -rotationAngle, 0) * transform.rotation;
+
+            // Add the previous rotation to the stack
+            previousRotations.Push(transform.rotation);
+
+            // Start the rotation
+            isRotating = true;
+            rotationTimer = 0.0f;
+            runTime = true;
+            move.Play();
+            MoveClear();
+            VibrationManager.Instance.Vibrate(0.05f, 0.2f);
+        }
+
+        //if (!canRotateULeft && !isRotating && !endGame)
+        //{
+        //    directorLEFT.Play();
+        //    wrong.Play();
+        //}
+    }
+
     public void RightMove()
     {
         if (canRotateRight && !isRotating && !endGame)
@@ -295,6 +352,58 @@ public class BallControllerV3 : MonoBehaviour
             directorRight.Play();
             wrong.Play();
         }
+    }
+
+    public void UpRightMove()
+    {
+        if (canRotateURight && !isRotating && !endGame)
+        {
+            // Set the target rotation based on the current global rotation and the desired rotation angle
+            targetRotation = Quaternion.Euler(rotationAngle, rotationAngle, 0) * transform.rotation;
+
+            // Add the previous rotation to the stack
+            previousRotations.Push(transform.rotation);
+
+            // Start the rotation
+            isRotating = true;
+            rotationTimer = 0.0f;
+            runTime = true;
+            move.Play();
+            MoveClear();
+            VibrationManager.Instance.Vibrate(0.05f, 0.2f);
+        }
+
+        //if (!canRotateURight && !isRotating && !endGame)
+        //{
+        //    directorRight.Play();
+        //    wrong.Play();
+        //}
+    }
+
+    public void DownRightMove()
+    {
+        if (canRotateDRight && !isRotating && !endGame)
+        {
+            // Set the target rotation based on the current global rotation and the desired rotation angle
+            targetRotation = Quaternion.Euler(-rotationAngle, rotationAngle, 0) * transform.rotation;
+
+            // Add the previous rotation to the stack
+            previousRotations.Push(transform.rotation);
+
+            // Start the rotation
+            isRotating = true;
+            rotationTimer = 0.0f;
+            runTime = true;
+            move.Play();
+            MoveClear();
+            VibrationManager.Instance.Vibrate(0.05f, 0.2f);
+        }
+
+        //if (!canRotateDRight && !isRotating && !endGame)
+        //{
+        //    directorRight.Play();
+        //    wrong.Play();
+        //}
     }
 
     public void MoveCheck()

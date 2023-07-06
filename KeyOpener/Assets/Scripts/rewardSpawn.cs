@@ -15,11 +15,16 @@ public class rewardSpawn : MonoBehaviour
     public TextAsset csvFile; // Plik CSV z list¹ prefabrykatów
     public List<PrefabData> prefabList; // Lista prefabrykatów i ich szans na spawn
     public int currentPrefabIndex = 0; // Indeks prefabrykatu, który ma zostaæ utworzony
-    public int spawnChanceColumn = 2; // Indeks kolumny z szansami na spawn
+    public int spawnChanceColumn; // Indeks kolumny z szansami na spawn
 
     private void Start()
     {
         if (PlayerPrefs.GetInt("exp") < 30)
+        {
+            spawnChanceColumn = 2;
+        }
+
+        if (PlayerPrefs.GetInt("exp") >= 30)
         {
             spawnChanceColumn = 1;
         }

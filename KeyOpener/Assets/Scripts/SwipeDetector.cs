@@ -153,4 +153,24 @@ public class SwipeDetector : MonoBehaviour
     {
         ballMove.RightMove();
     }
+
+    public void LowerLeftMove()
+    {
+        ballMove.DownLeftMove();
+    }
+
+    public void LowerRightMove()
+    {
+        ballMove.DownRightMove();
+    }
+
+    public void UpperRightMove()
+    {
+        ballMove.UpRightMove();
+    }
+
+    public void UpperLeftMove()
+    {
+        ballMove.UpLeftMove();
+    }
 }
