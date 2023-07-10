@@ -48,7 +48,43 @@ public class LocalCSVLoader : MonoBehaviour
         {
             columnToLoad = 3;
         }
+
+        // trudny poziom
+        if (PlayerPrefs.GetInt("exp") >= 25)
+        {
+            columnToLoad = 4;
+        }
+
+        if (PlayerPrefs.GetInt("exp") >= 27)
+        {
+            columnToLoad = 3;
+        }
+
+
+        //trudny poziom
+        if (PlayerPrefs.GetInt("exp") >= 35)
+        {
+            columnToLoad = 4;
+        }
+
+        if (PlayerPrefs.GetInt("exp") >= 39)
+        {
+            columnToLoad = 3;
+        }
+
+        //trudny poziom
+        if (PlayerPrefs.GetInt("exp") >= 45)
+        {
+            columnToLoad = 4;
+        }
+
+        if (PlayerPrefs.GetInt("exp") >= 49)
+        {
+            columnToLoad = 3;
+        }
     }
+
+
 
     public void LoadPrefabsFromCSV()
     {

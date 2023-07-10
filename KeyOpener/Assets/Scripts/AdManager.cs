@@ -131,10 +131,4 @@ public class AdManager : MonoBehaviour
             LoadInterstitialAd();
         };
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

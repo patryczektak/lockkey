@@ -22,8 +22,11 @@ public class VibrationManager : MonoBehaviour
         // SprawdŸ, czy urz¹dzenie obs³uguje wibracje
         if (SystemInfo.supportsVibration)
         {
-            // Konwertuj moc wibracji na zakres od 0.0f do 1.0f
-            intensity = Mathf.Clamp01(intensity * 0.5f);
+            // Zmniejsz intensywnoœæ wibracji do s³abego impulsu
+            intensity = Mathf.Clamp01(intensity * 0.1f);
+
+            // Skróæ czas trwania wibracji do krótkiego impulsu
+            duration = Mathf.Clamp(duration, 0.05f, 0.5f);
 
             // Oblicz czas trwania wibracji w milisekundach
             long milliseconds = (long)(duration * 1000f);
