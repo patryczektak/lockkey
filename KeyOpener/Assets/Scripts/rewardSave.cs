@@ -14,6 +14,7 @@ public class rewardSave : MonoBehaviour
         if(PlayerPrefs.GetInt(PrizeName)== 0)
         {
             tresureScript.Tresure();
+
         }
         PlayerPrefs.SetInt(PrizeName, 1);
     }

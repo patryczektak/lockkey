@@ -8,6 +8,7 @@ public class animPlayOnEnable : MonoBehaviour
     public PlayableDirector directorShow;
     public PlayableDirector directorHide;
     public bool TresureUI;
+    public GameObject newDot;
 
     public void Show()
     {        
@@ -34,5 +35,6 @@ public class animPlayOnEnable : MonoBehaviour
         directorHide.Stop();
         directorHide.time = 0f;
         directorHide.Play();
+        newDot.SetActive(false);
     }
 }

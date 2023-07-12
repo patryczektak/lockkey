@@ -153,6 +153,16 @@ public class BallControllerV3 : MonoBehaviour
                     directorDissolve.Play();
 
                     PlayerPrefs.SetInt("exp", PlayerPrefs.GetInt("exp") + 1);
+                    //Firebase event
+                    Firebase.Analytics.FirebaseAnalytics.LogEvent(
+  Firebase.Analytics.FirebaseAnalytics.EventLevelUp,
+  new Firebase.Analytics.Parameter[] {
+    new Firebase.Analytics.Parameter(
+      Firebase.Analytics.FirebaseAnalytics.ParameterCharacter, "Player"),
+    new Firebase.Analytics.Parameter(
+      Firebase.Analytics.FirebaseAnalytics.ParameterLevel, PlayerPrefs.GetInt("exp")),
+  }
+);
                 }
                 rotationTimer = 0f;
             }
@@ -214,7 +224,7 @@ public class BallControllerV3 : MonoBehaviour
             runTime = true;
             move.Play();
             MoveClear();
-            VibrationManager.Instance.Vibrate(0.05f, 0.2f);
+            //VibrationManager.Instance.Vibrate(0.05f, 0.2f);
         }
 
         if (!canRotateUp && !isRotating && !endGame)
@@ -240,7 +250,7 @@ public class BallControllerV3 : MonoBehaviour
             runTime = true;
             move.Play();
             MoveClear();
-            VibrationManager.Instance.Vibrate(0.05f, 0.2f);
+            //VibrationManager.Instance.Vibrate(0.05f, 0.2f);
         }
 
         if (!canRotateDown && !isRotating && !endGame)
@@ -266,7 +276,7 @@ public class BallControllerV3 : MonoBehaviour
             runTime = true;
             move.Play();
             MoveClear();
-            VibrationManager.Instance.Vibrate(0.05f, 0.2f);
+            //VibrationManager.Instance.Vibrate(0.05f, 0.2f);
         }
 
         if (!canRotateLeft && !isRotating && !endGame)
@@ -292,7 +302,7 @@ public class BallControllerV3 : MonoBehaviour
             runTime = true;
             move.Play();
             MoveClear();
-            VibrationManager.Instance.Vibrate(0.05f, 0.2f);
+            //VibrationManager.Instance.Vibrate(0.05f, 0.2f);
         }
 
         //if (!canRotateDLeft && !isRotating && !endGame)
@@ -318,7 +328,7 @@ public class BallControllerV3 : MonoBehaviour
             runTime = true;
             move.Play();
             MoveClear();
-            VibrationManager.Instance.Vibrate(0.05f, 0.2f);
+            //VibrationManager.Instance.Vibrate(0.05f, 0.2f);
         }
 
         //if (!canRotateULeft && !isRotating && !endGame)
@@ -344,7 +354,7 @@ public class BallControllerV3 : MonoBehaviour
             runTime = true;
             move.Play();
             MoveClear();
-            VibrationManager.Instance.Vibrate(0.05f, 0.2f);
+            //VibrationManager.Instance.Vibrate(0.05f, 0.2f);
         }
 
         if (!canRotateRight && !isRotating && !endGame)
@@ -370,7 +380,7 @@ public class BallControllerV3 : MonoBehaviour
             runTime = true;
             move.Play();
             MoveClear();
-            VibrationManager.Instance.Vibrate(0.05f, 0.2f);
+            //VibrationManager.Instance.Vibrate(0.05f, 0.2f);
         }
 
         //if (!canRotateURight && !isRotating && !endGame)
@@ -396,7 +406,7 @@ public class BallControllerV3 : MonoBehaviour
             runTime = true;
             move.Play();
             MoveClear();
-            VibrationManager.Instance.Vibrate(0.05f, 0.2f);
+            //VibrationManager.Instance.Vibrate(0.05f, 0.2f);
         }
 
         //if (!canRotateDRight && !isRotating && !endGame)

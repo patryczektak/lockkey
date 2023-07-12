@@ -34,8 +34,8 @@ public class BannerAd : MonoBehaviour
 
     public void DestroyBannerAd()
     {
-        if (adBanner != null)
-            adBanner.Destroy();
+        //if (adBanner != null)
+        //    adBanner.Destroy();
     }
 
     #endregion
@@ -45,7 +45,7 @@ public class BannerAd : MonoBehaviour
 
     void OnDestroy()
     {
-        DestroyBannerAd();
+        //DestroyBannerAd();
     }
 
 }
