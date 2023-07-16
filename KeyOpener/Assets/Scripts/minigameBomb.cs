@@ -5,6 +5,10 @@ using UnityEngine;
 public class minigameBomb : MonoBehaviour
 {
     public BallControllerV3 ballController;
+    public ParticleSystem first;
+    public ParticleSystem second;
+    public ParticleSystem third;
+    public int TimeReduce;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +23,9 @@ public class minigameBomb : MonoBehaviour
 
     public void Boom()
     {
-        ballController.gameTime = 0.1f;
+        ballController.gameTime = ballController.gameTime - 2;
+        first.Play();
+        second.Play();
     }
 
     public void OnTriggerEnter(Collider other)

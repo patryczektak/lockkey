@@ -27,6 +27,11 @@ public class LocalCSVLoader : MonoBehaviour
         levelText.text = PlayerPrefs.GetInt("exp").ToString();
         levelTextShadow.text = PlayerPrefs.GetInt("exp").ToString();
     }
+
+    private bool isHardy(int levelToCheck)
+    {
+        return levelToCheck % 3 == 0;
+    }
     public void ColumnCheck()
     {
         //ustalanie indexu wed³ug exp gracza
@@ -40,48 +45,25 @@ public class LocalCSVLoader : MonoBehaviour
             columnToLoad = 1;
         }
 
-        if (PlayerPrefs.GetInt("exp") >= 15)
+        if (PlayerPrefs.GetInt("exp") >= 5)
         {
             columnToLoad = 2;
-        }
-        if (PlayerPrefs.GetInt("exp") >= 20)
-        {
-            columnToLoad = 3;
+            Debug.Log("poziom trudny");
         }
 
-        // trudny poziom
-        if (PlayerPrefs.GetInt("exp") >= 25)
+        if (PlayerPrefs.GetInt("exp") >= 9 && isHardy(PlayerPrefs.GetInt("exp")))
         {
-            columnToLoad = 4;
+            columnToLoad = 2;
+            Debug.Log("poziomy 2");
         }
 
-        if (PlayerPrefs.GetInt("exp") >= 27)
+        if (PlayerPrefs.GetInt("exp") > 5 && !isHardy(PlayerPrefs.GetInt("exp")))
         {
-            columnToLoad = 3;
+            columnToLoad = 1;
+            Debug.Log("poziomy 1");
         }
 
 
-        //trudny poziom
-        if (PlayerPrefs.GetInt("exp") >= 35)
-        {
-            columnToLoad = 4;
-        }
-
-        if (PlayerPrefs.GetInt("exp") >= 39)
-        {
-            columnToLoad = 3;
-        }
-
-        //trudny poziom
-        if (PlayerPrefs.GetInt("exp") >= 45)
-        {
-            columnToLoad = 4;
-        }
-
-        if (PlayerPrefs.GetInt("exp") >= 49)
-        {
-            columnToLoad = 3;
-        }
     }
 
 

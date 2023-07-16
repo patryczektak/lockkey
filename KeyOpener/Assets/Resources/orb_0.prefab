@@ -1382,7 +1382,7 @@ MonoBehaviour:
   runTime: 0
   gameTimeLimit: 10
   gameTime: 10
-  extraTime: 1
+  extraTime: 0
   move: {fileID: 7279319631940785107}
   reset: {fileID: 3481367347419097796}
   wrong: {fileID: 6152947978428050516}

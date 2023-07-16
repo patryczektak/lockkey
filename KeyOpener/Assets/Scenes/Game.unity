@@ -6552,6 +6552,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 641973317}
+  - component: {fileID: 641973318}
   m_Layer: 0
   m_Name: PushNotification
   m_TagString: Untagged
@@ -6574,6 +6575,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &641973318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641973316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bffccbadb352cf641b10c1b7cbc016c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &644875836
 GameObject:
   m_ObjectHideFlags: 0
@@ -15914,7 +15927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartGame: 1
-  sperydexON: 30
+  sperydexON: 50
   sperydexText: {fileID: 1201937284}
   sperydex: {fileID: 1769025048}
 --- !u!1 &1445364727
@@ -21131,7 +21144,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 320.0004, y: -713.86804}
+  m_AnchoredPosition: {x: 320.0004, y: -711.11273}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1812757910
