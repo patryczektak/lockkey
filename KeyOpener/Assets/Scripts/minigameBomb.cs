@@ -9,6 +9,8 @@ public class minigameBomb : MonoBehaviour
     public ParticleSystem second;
     public ParticleSystem third;
     public int TimeReduce;
+    private bool boom;
+    public GameObject pref;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,11 @@ public class minigameBomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(ballController.gameTime == ballController.gameTimeLimit)
+        {
+            boom = false;
+            pref.SetActive(true);
+        }
     }
 
     public void Boom()
@@ -26,11 +32,14 @@ public class minigameBomb : MonoBehaviour
         ballController.gameTime = ballController.gameTime - 2;
         first.Play();
         second.Play();
+        third.Play();
+        boom = true;
+        pref.SetActive(false);
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && boom == false)
         {
             Boom();
         }
