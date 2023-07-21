@@ -3028,6 +3028,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6009850449287647160, guid: 35035c30b659da74e8152472e3183a6b,
         type: 3}
+      propertyPath: boomUI
+      value: 
+      objectReference: {fileID: 5031023089810304487}
+    - target: {fileID: 6009850449287647160, guid: 35035c30b659da74e8152472e3183a6b,
+        type: 3}
       propertyPath: ballController
       value: 
       objectReference: {fileID: 5379534372508352232}
@@ -3377,6 +3382,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bomb
       objectReference: {fileID: 0}
+    - target: {fileID: 6009850449287647160, guid: 35035c30b659da74e8152472e3183a6b,
+        type: 3}
+      propertyPath: boomUI
+      value: 
+      objectReference: {fileID: 5031023089810304487}
     - target: {fileID: 6009850449287647160, guid: 35035c30b659da74e8152472e3183a6b,
         type: 3}
       propertyPath: ballController
@@ -5141,6 +5151,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!320 &5031023089810304487 stripped
+PlayableDirector:
+  m_CorrespondingSourceObject: {fileID: 4432924011199671551, guid: ecc0d862eefe1af4e919fe3ef0b082b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 8670872112379281688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7084048806380699616 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1881019091103039224, guid: ecc0d862eefe1af4e919fe3ef0b082b8,

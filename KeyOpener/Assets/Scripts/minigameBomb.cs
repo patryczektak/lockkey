@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class minigameBomb : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class minigameBomb : MonoBehaviour
     public int TimeReduce;
     private bool boom;
     public GameObject pref;
+    public PlayableDirector boomUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,7 @@ public class minigameBomb : MonoBehaviour
         third.Play();
         boom = true;
         pref.SetActive(false);
+        boomUI.Play();
     }
 
     public void OnTriggerEnter(Collider other)
