@@ -18,6 +18,7 @@ public class LocalCSVLoader : MonoBehaviour
 
     private void Start()
     {
+        columnToLoad = PlayerPrefs.GetInt("exp");
         ColumnCheck();
         LoadPrefabsFromCSV();
         CreateNextPrefab();        
@@ -35,35 +36,43 @@ public class LocalCSVLoader : MonoBehaviour
     public void ColumnCheck()
     {
         //ustalanie indexu wed³ug exp gracza
-        if (PlayerPrefs.GetInt("exp") == 0)
+        //if (PlayerPrefs.GetInt("exp") == 0)
+        //{
+        //    columnToLoad = 0;
+        //}
+
+        //if (PlayerPrefs.GetInt("exp") >= 1)
+        //{
+        //    columnToLoad = 1;
+        //}
+
+        //if (PlayerPrefs.GetInt("exp") >= 5)
+        //{
+        //    columnToLoad = 2;
+        //    Debug.Log("poziom trudny");
+        //}
+
+        //if (PlayerPrefs.GetInt("exp") >= 9 && isHardy(PlayerPrefs.GetInt("exp")))
+        //{
+        //    columnToLoad = 2;
+        //    Debug.Log("poziomy 2");
+        //}
+
+        //if (PlayerPrefs.GetInt("exp") > 5 && !isHardy(PlayerPrefs.GetInt("exp")))
+        //{
+        //    columnToLoad = 1;
+        //    Debug.Log("poziomy 1");
+        //}
+
+        if (PlayerPrefs.GetInt("exp") < 40 && !isHardy(PlayerPrefs.GetInt("exp")))
         {
-            columnToLoad = 0;
+            columnToLoad = PlayerPrefs.GetInt("exp");
         }
 
-        if (PlayerPrefs.GetInt("exp") >= 1)
+        if (PlayerPrefs.GetInt("exp") >= 40 && !isHardy(PlayerPrefs.GetInt("exp")))
         {
-            columnToLoad = 1;
+            columnToLoad = 40;
         }
-
-        if (PlayerPrefs.GetInt("exp") >= 5)
-        {
-            columnToLoad = 2;
-            Debug.Log("poziom trudny");
-        }
-
-        if (PlayerPrefs.GetInt("exp") >= 9 && isHardy(PlayerPrefs.GetInt("exp")))
-        {
-            columnToLoad = 2;
-            Debug.Log("poziomy 2");
-        }
-
-        if (PlayerPrefs.GetInt("exp") > 5 && !isHardy(PlayerPrefs.GetInt("exp")))
-        {
-            columnToLoad = 1;
-            Debug.Log("poziomy 1");
-        }
-
-
     }
 
 
@@ -114,15 +123,11 @@ public class LocalCSVLoader : MonoBehaviour
 
         if (prefabList.Count > 0)
         {
-            if (currentPrefabIndex >= prefabList.Count)
-            {
-                currentPrefabIndex = 0;
-            }
+            // Generate a random index within the range of available prefabList
+            int randomPrefabIndex = Random.Range(0, prefabList.Count);
 
-            GameObject prefab = prefabList[currentPrefabIndex];
+            GameObject prefab = prefabList[randomPrefabIndex];
             objectToKill = Instantiate(prefab, transform.position, Quaternion.identity, transform);
-
-            currentPrefabIndex++;
         }
         else
         {

@@ -6553,6 +6553,7 @@ GameObject:
   m_Component:
   - component: {fileID: 641973317}
   - component: {fileID: 641973318}
+  - component: {fileID: 641973319}
   m_Layer: 0
   m_Name: PushNotification
   m_TagString: Untagged
@@ -6585,6 +6586,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bffccbadb352cf641b10c1b7cbc016c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &641973319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641973316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 968af48d3c311f24e81d1b7378f7c136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &644875836

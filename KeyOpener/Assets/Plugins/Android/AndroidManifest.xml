@@ -5,6 +5,7 @@
 
   <!-- Dodaj uprawnienie dostępu do sieci -->
   <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.START_VIEW_PERMISSION_USAGE" />
 
   <application>
     <!-- Dodaj pakiet Google Play Services -->
