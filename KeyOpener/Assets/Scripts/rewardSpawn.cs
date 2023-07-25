@@ -19,12 +19,12 @@ public class rewardSpawn : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("exp") < 30)
+        if (PlayerPrefs.GetInt("exp") < 50)
         {
             spawnChanceColumn = 2;
         }
 
-        if (PlayerPrefs.GetInt("exp") >= 30)
+        if (PlayerPrefs.GetInt("exp") >= 50)
         {
             spawnChanceColumn = 1;
         }
