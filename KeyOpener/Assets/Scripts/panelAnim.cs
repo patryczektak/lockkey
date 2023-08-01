@@ -7,7 +7,9 @@ public class panelAnim : MonoBehaviour
 {
     public PlayableDirector timeline;
     public PlayableDirector timelineBack;
+    public PlayableDirector timelineStar;
     public AdManager AdShow;
+    private bool startShow;
 
     public void Show()
     {
@@ -35,8 +37,18 @@ public class panelAnim : MonoBehaviour
         AdShow.ShowStartAd();
     }
 
+    public void StarPrize()
+    {
+        timelineStar.Play();
+    }
+
     private void OnEnable()
     {
         Show();
+        if(startShow == true)
+        {
+            timelineStar.Play();
+        }
+        startShow = true;
     }
 }
