@@ -15,7 +15,7 @@ public class panelAnim : MonoBehaviour
         timeline.time = 0f;
         timeline.Play();
 
-        AdShow.ShowAd();
+        //AdShow.ShowAd();
     }
 
     public void Hide()
@@ -23,6 +23,16 @@ public class panelAnim : MonoBehaviour
         timelineBack.Stop();
         timelineBack.time = 0f;
         timelineBack.Play();
+    }
+
+    public void AdToShow()
+    {
+        AdShow.ShowAd();
+    }
+
+    public void AdToStartShow()
+    {
+        AdShow.ShowStartAd();
     }
 
     private void OnEnable()

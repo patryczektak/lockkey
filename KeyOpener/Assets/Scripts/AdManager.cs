@@ -72,7 +72,7 @@ public class AdManager : MonoBehaviour
 
     public void ShowAd()
     {
-        if (AdCounter == 0)
+        if (AdCounter <= 0)
         {
             AdCounter = 4;
             if (interstitialAd != null && interstitialAd.CanShowAd())
@@ -92,6 +92,18 @@ public class AdManager : MonoBehaviour
         }
     }
 
+    public void ShowStartAd()
+    {
+        if (interstitialAd != null && interstitialAd.CanShowAd())
+        {
+            Debug.Log("Showing interstitial ad.");
+            interstitialAd.Show();
+        }
+        else
+        {
+            Debug.LogError("Interstitial ad is not ready yet.");
+        }
+    }
 
     private void RegisterEventHandlers(InterstitialAd ad)
     {
