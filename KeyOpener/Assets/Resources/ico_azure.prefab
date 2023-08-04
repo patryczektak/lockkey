@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrizeName: ico_azure
+  starsValue: 10
 --- !u!114 &7403027346122154013
 MonoBehaviour:
   m_ObjectHideFlags: 0

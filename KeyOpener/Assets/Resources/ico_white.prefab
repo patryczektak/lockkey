@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrizeName: ico_white
+  starsValue: 10
 --- !u!114 &8732990267514262938
 MonoBehaviour:
   m_ObjectHideFlags: 0

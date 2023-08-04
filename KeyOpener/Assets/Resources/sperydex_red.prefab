@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrizeName: sperydex_red
+  starsValue: 25
 --- !u!114 &5341434369430388387
 MonoBehaviour:
   m_ObjectHideFlags: 0

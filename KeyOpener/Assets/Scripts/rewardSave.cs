@@ -7,6 +7,9 @@ public class rewardSave : MonoBehaviour
     public string PrizeName;
 
     private tresureEnable tresureScript;
+    private ChangeValueAnimator changeStar;
+
+    public int starsValue;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +20,9 @@ public class rewardSave : MonoBehaviour
 
         }
         PlayerPrefs.SetInt(PrizeName, 1);
+
+        changeStar = GameObject.FindObjectOfType<ChangeValueAnimator>();
+        changeStar.ChangeValueUp(starsValue);
     }
 
 }
