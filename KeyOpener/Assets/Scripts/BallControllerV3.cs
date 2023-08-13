@@ -31,7 +31,7 @@ public class BallControllerV3 : MonoBehaviour
     private Stack<Quaternion> previousRotations = new Stack<Quaternion>();
     private GameObject objectToEnable;
 
-
+    private againShowHide againPanel;
     //public int[] back;
     public int currentPoint = 0;
     public GameObject[] neon;
@@ -205,6 +205,9 @@ public class BallControllerV3 : MonoBehaviour
         reset.Play();
         MoveClear();
         ClearVisitedRotations();
+
+        againPanel = GameObject.FindObjectOfType<againShowHide>();
+        againPanel.Show();
     }
 
 

@@ -10,6 +10,9 @@ public class tresureActivate : MonoBehaviour
     public GameObject[] thirdTresure;
     public GameObject[] shine;
 
+    public float[] firstTresureWeights;
+    public float[] secondTresureWeights;
+    public float[] thirdTresureWeights;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,54 +33,54 @@ public class tresureActivate : MonoBehaviour
         }
     }
 
-    public void FirstTresurePack()
+    public void ActivateShine()
     {
-        DeactivateAllObjects();
-
         foreach (GameObject obj in shine)
         {
             obj.SetActive(true);
         }
+    }
 
-        int randomIndex = Random.Range(0, firstTresure.Length);
-
-        for (int i = 0; i < firstTresure.Length; i++)
+    public void SelectRandomTresure(GameObject[] tresureObjects, float[] weights)
+    {
+        float totalWeight = 0f;
+        foreach (float weight in weights)
         {
-            firstTresure[i].SetActive(i == randomIndex);
+            totalWeight += weight;
         }
+
+        float randomValue = Random.Range(0f, totalWeight);
+        float cumulativeWeight = 0f;
+
+        for (int i = 0; i < tresureObjects.Length; i++)
+        {
+            cumulativeWeight += weights[i];
+            if (randomValue <= cumulativeWeight)
+            {
+                tresureObjects[i].SetActive(true);
+                break;
+            }
+        }
+    }
+
+    public void FirstTresurePack()
+    {
+        DeactivateAllObjects();
+        ActivateShine();
+        SelectRandomTresure(firstTresure, firstTresureWeights);
     }
 
     public void SecondTresurePack()
     {
         DeactivateAllObjects();
-
-        foreach (GameObject obj in shine)
-        {
-            obj.SetActive(true);
-        }
-
-        int randomIndex = Random.Range(0, secondTresure.Length);
-
-        for (int i = 0; i < secondTresure.Length; i++)
-        {
-            secondTresure[i].SetActive(i == randomIndex);
-        }
+        ActivateShine();
+        SelectRandomTresure(secondTresure, secondTresureWeights);
     }
 
     public void ThirdTresurePack()
     {
         DeactivateAllObjects();
-
-        foreach (GameObject obj in shine)
-        {
-            obj.SetActive(true);
-        }
-
-        int randomIndex = Random.Range(0, thirdTresure.Length);
-
-        for (int i = 0; i < thirdTresure.Length; i++)
-        {
-            thirdTresure[i].SetActive(i == randomIndex);
-        }
+        ActivateShine();
+        SelectRandomTresure(thirdTresure, thirdTresureWeights);
     }
 }

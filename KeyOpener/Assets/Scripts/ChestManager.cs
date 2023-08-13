@@ -158,6 +158,7 @@ public class ChestManager : MonoBehaviour
             changeStar.ChangeValueDown(price);
 
             Open.SetActive(true);
+            activateTresure.FirstTresurePack();
         }
 
         if (price > PlayerPrefs.GetInt("star"))

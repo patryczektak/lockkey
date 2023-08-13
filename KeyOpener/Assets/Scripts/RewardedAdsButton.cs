@@ -4,12 +4,20 @@ using UnityEngine;
 using GoogleMobileAds;
 using GoogleMobileAds.Api;
 using System;
+using UnityEngine.Playables;
 public class RewardedAdsButton : MonoBehaviour
 {
     public RewardedAd rewardedAds;
     public string _adUnitId;
 
     public ChestManager tresure;
+    public LocalCSVLoader nextLevel;
+
+    private ChangeValueAnimator changeStar;
+    private againShowHide againPanel;
+
+    public PlayableDirector stars;
+    public GameObject moreCoinsOBJ;
     //public UIScript uiScript;
     // Start is called before the first frame update
     void Start()
@@ -68,6 +76,44 @@ public class RewardedAdsButton : MonoBehaviour
                 // TODO: Reward the user.
                 //uiScript.OnUserEarnedReward();
                 tresure.RewardChest();
+            });
+        }
+    }
+
+    public void ShowNextLevelRewarddAd()
+    {
+        const string rewardMsg =
+            "Rewarded ad rewarded the user. Type: {0}, amount: {1}.";
+
+        if (rewardedAds != null && rewardedAds.CanShowAd())
+        {
+            rewardedAds.Show((Reward reward) =>
+            {
+                // TODO: Reward the user.
+                //uiScript.OnUserEarnedReward();
+                againPanel = GameObject.FindObjectOfType<againShowHide>();
+                againPanel.Hide();
+                nextLevel.CreateNextPrefab();
+
+                PlayerPrefs.SetInt("exp", PlayerPrefs.GetInt("exp") + 1);
+            });
+        }
+    }
+
+    public void ShowMoreCoinRewarddAd()
+    {
+        const string rewardMsg =
+            "Rewarded ad rewarded the user. Type: {0}, amount: {1}.";
+
+        if (rewardedAds != null && rewardedAds.CanShowAd())
+        {
+            rewardedAds.Show((Reward reward) =>
+            {
+                changeStar = GameObject.FindObjectOfType<ChangeValueAnimator>();
+                changeStar.ChangeValueUp(100);
+
+                stars.Play();
+                moreCoinsOBJ.SetActive(false);
             });
         }
     }

@@ -9,7 +9,10 @@ public class panelAnim : MonoBehaviour
     public PlayableDirector timelineBack;
     public PlayableDirector timelineStar;
     public AdManager AdShow;
+    public RewardedAdsButton AdReward;
     private bool startShow;
+
+    public GameObject adsButt;
 
     public void Show()
     {
@@ -17,6 +20,15 @@ public class panelAnim : MonoBehaviour
         timeline.time = 0f;
         timeline.Play();
 
+        if (AdReward.rewardedAds != null)
+        {
+            adsButt.SetActive(true);
+        }
+
+        if (AdReward.rewardedAds == null)
+        {
+            adsButt.SetActive(false);
+        }
         //AdShow.ShowAd();
     }
 
