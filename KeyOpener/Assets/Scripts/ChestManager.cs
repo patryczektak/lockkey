@@ -8,11 +8,14 @@ public class ChestManager : MonoBehaviour
 {
     private ChangeValueAnimator changeStar;
 
+    public RewardedAdsButton rewarded;
+
     public int small;
     public int mid;
     public int big;
     public int price;
 
+    public int ChestNumber;
 
     public GameObject sBox;
     public GameObject mBox;
@@ -23,10 +26,14 @@ public class ChestManager : MonoBehaviour
     public GameObject Open;
     public GameObject tooExpensive;
 
+    public GameObject RewardButton;
+
     public TextMeshProUGUI valueText;
 
     public PlayableDirector timelineBack;
     public PlayableDirector timelineShow;
+
+    public tresureActivate activateTresure;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +50,7 @@ public class ChestManager : MonoBehaviour
     public void smallBox()
     {
         price = small;
+        ChestNumber = 1;
 
         sBox.SetActive(true);
         mBox.SetActive(false);
@@ -65,6 +73,7 @@ public class ChestManager : MonoBehaviour
     public void midBox()
     {
         price = mid;
+        ChestNumber = 2;
 
         sBox.SetActive(false);
         mBox.SetActive(true);
@@ -87,6 +96,7 @@ public class ChestManager : MonoBehaviour
     public void bigBox()
     {
         price = big;
+        ChestNumber = 3;
 
         sBox.SetActive(false);
         mBox.SetActive(false);
@@ -122,7 +132,46 @@ public class ChestManager : MonoBehaviour
             {
                 tooExpensive.SetActive(true);
             }
+
+            if(ChestNumber == 1)
+            {
+                activateTresure.FirstTresurePack();
+            }
+
+            if (ChestNumber == 2)
+            {
+                activateTresure.FirstTresurePack();
+            }
+
+            if (ChestNumber == 3)
+            {
+                activateTresure.FirstTresurePack();
+            }
         }        
+    }
+
+    public void BuyChest()
+    {
+        if (price <= PlayerPrefs.GetInt("star"))
+        {
+            changeStar = GameObject.FindObjectOfType<ChangeValueAnimator>();
+            changeStar.ChangeValueDown(price);
+
+            Open.SetActive(true);
+        }
+
+        if (price > PlayerPrefs.GetInt("star"))
+        {
+            tooExpensive.SetActive(true);
+        }
+    }
+
+    public void RewardChest()
+    {
+        Open.SetActive(true);
+        activateTresure.FirstTresurePack();
+        RewardButton.SetActive(false);
+
     }
 
     public void Show()
@@ -130,6 +179,21 @@ public class ChestManager : MonoBehaviour
         timelineShow.Stop();
         timelineShow.time = 0f;
         timelineShow.Play();
+        if (price > PlayerPrefs.GetInt("star"))
+        {
+            tooExpensive.SetActive(true);
+        }
+
+        //sprawdzenie czy reklama jest za³adowana
+        if(rewarded.rewardedAds != null)
+        {
+            RewardButton.SetActive(true);
+        }
+
+        if (rewarded.rewardedAds == null)
+        {
+            RewardButton.SetActive(false);
+        }
     }
 
     public void Hide()
@@ -138,4 +202,6 @@ public class ChestManager : MonoBehaviour
         timelineBack.time = 0f;
         timelineBack.Play();
     }
+
+
 }

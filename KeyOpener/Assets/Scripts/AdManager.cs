@@ -97,7 +97,7 @@ public class AdManager : MonoBehaviour
         if (interstitialAd != null && interstitialAd.CanShowAd())
         {
             Debug.Log("Showing interstitial ad.");
-            interstitialAd.Show();
+            //interstitialAd.Show();
         }
         else
         {
