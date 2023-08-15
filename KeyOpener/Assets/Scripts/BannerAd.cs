@@ -13,6 +13,16 @@ public class BannerAd : MonoBehaviour
 
     void Start()
     {
+        //idApp = "ca-app-pub-3935654686224415~1440199166";
+        //idBanner = "ca-app-pub-3935654686224415/4560308219";
+
+        //MobileAds.Initialize(initStatus => { });
+
+        //RequestBannerAd();
+    }
+
+    public void LoadAfter()
+    {
         idApp = "ca-app-pub-3935654686224415~1440199166";
         idBanner = "ca-app-pub-3935654686224415/4560308219";
 
@@ -20,8 +30,6 @@ public class BannerAd : MonoBehaviour
 
         RequestBannerAd();
     }
-
-
 
     #region Banner Methods --------------------------------------------------
 

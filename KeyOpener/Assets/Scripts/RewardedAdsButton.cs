@@ -22,6 +22,14 @@ public class RewardedAdsButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //MobileAds.Initialize((InitializationStatus initStatus) =>
+        //{
+        //    LoadRewardedAd();
+        //});
+    }
+
+    public void LoadAfter()
+    {
         MobileAds.Initialize((InitializationStatus initStatus) =>
         {
             LoadRewardedAd();

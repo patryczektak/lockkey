@@ -13,6 +13,9 @@ public class AdManager : MonoBehaviour
     public static AdManager Instance;
     private int AdCounter;
 
+    public RewardedAdsButton reklama;
+    public BannerAd reklamaBannewr;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +32,12 @@ public class AdManager : MonoBehaviour
 
         MobileAds.Initialize((InitializationStatus initStatus) =>
         {
+            Debug.Log("Reklama 1");
             LoadInterstitialAd();
+            Debug.Log("Reklama 2");
+
+            reklama.LoadAfter();
+            reklamaBannewr.LoadAfter();
         });
 
     }
