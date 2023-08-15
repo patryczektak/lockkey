@@ -38,7 +38,7 @@ public class ChestManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        smallBox();
+        //smallBox();
     }
 
     // Update is called once per frame
@@ -125,8 +125,8 @@ public class ChestManager : MonoBehaviour
 
             sChest.SetActive(false);
             mChest.SetActive(false);
-            bChest.SetActive(false);
-            Open.SetActive(true);
+            bChest.SetActive(true);
+            //Open.SetActive(true);
 
             if (price > PlayerPrefs.GetInt("star"))
             {
@@ -157,7 +157,7 @@ public class ChestManager : MonoBehaviour
             changeStar = GameObject.FindObjectOfType<ChangeValueAnimator>();
             changeStar.ChangeValueDown(price);
 
-            Open.SetActive(true);
+            //Open.SetActive(true);
             activateTresure.FirstTresurePack();
         }
 
@@ -169,7 +169,7 @@ public class ChestManager : MonoBehaviour
 
     public void RewardChest()
     {
-        Open.SetActive(true);
+        //Open.SetActive(true);
         activateTresure.FirstTresurePack();
         RewardButton.SetActive(false);
 
@@ -185,8 +185,13 @@ public class ChestManager : MonoBehaviour
             tooExpensive.SetActive(true);
         }
 
+        if (price <= PlayerPrefs.GetInt("star"))
+        {
+            tooExpensive.SetActive(false);
+        }
+
         //sprawdzenie czy reklama jest za³adowana
-        if(rewarded.rewardedAds != null)
+        if (rewarded.rewardedAds != null)
         {
             RewardButton.SetActive(true);
         }

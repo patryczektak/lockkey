@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class tresureActivate : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class tresureActivate : MonoBehaviour
     public float[] firstTresureWeights;
     public float[] secondTresureWeights;
     public float[] thirdTresureWeights;
+
+    public PlayableDirector timelineOpen;
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +68,10 @@ public class tresureActivate : MonoBehaviour
 
     public void FirstTresurePack()
     {
+        timelineOpen.Stop();
+        timelineOpen.time = 0f;
+        timelineOpen.Play();
+
         DeactivateAllObjects();
         ActivateShine();
         SelectRandomTresure(firstTresure, firstTresureWeights);
