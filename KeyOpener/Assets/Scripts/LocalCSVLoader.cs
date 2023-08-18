@@ -64,14 +64,14 @@ public class LocalCSVLoader : MonoBehaviour
         //    Debug.Log("poziomy 1");
         //}
 
-        if (PlayerPrefs.GetInt("exp") < 40)// && !isHardy(PlayerPrefs.GetInt("exp")))
+        if (PlayerPrefs.GetInt("exp") < 66)// && !isHardy(PlayerPrefs.GetInt("exp")))
         {
             columnToLoad = PlayerPrefs.GetInt("exp");
         }
 
-        if (PlayerPrefs.GetInt("exp") >= 40 )//&& !isHardy(PlayerPrefs.GetInt("exp")))
+        if (PlayerPrefs.GetInt("exp") >= 66 )//&& !isHardy(PlayerPrefs.GetInt("exp")))
         {
-            columnToLoad = 40;
+            columnToLoad = 67;
         }
     }
 
